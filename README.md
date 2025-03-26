@@ -100,7 +100,7 @@ Integrating the conversational interface with the technical backend proved chall
 1. Clone the git hub repo using this command (open a terminal in your file location) - git clone https://github.com/ewfx/gaidp-maayuzz
 2. Open the repo folder using a code editor like VSCode and open the terminal in the code editor
 3. Create a new branch if you wish
-4. Create a python venv using this command in terminal  - python -m venv venv
+4. Create a python venv (after going inside the "code" directory using this command in terminal  - python -m venv venv
 5. Activate the venv using this command - venv\Scripts\activate  
 6. pip install everything from the requirements.txt (Please wait for 3 to 4 minutes for it to install)
 7. In the .env file present in root directory, please paste your Hugging Face API token(Do not paste your token in "", Sample code line in the .env file is : 
