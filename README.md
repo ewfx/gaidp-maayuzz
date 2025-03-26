@@ -62,7 +62,7 @@ HUGGINGFACE_API_KEY=hf_XXXXXXXXXXiR). (To generate a token, go to huggingface.co
 8. To run the streamlit app, please use command - streamlit run app.py
 9. Please upload a .txt file in the streamlit Ui for regulatory instructions, I am uploading the sample txt I used in inputs folder in my artifacts.
 10. To close the streamlit app, or any process, type combination 'Ctrl + c' in the terminal.
-11. To run specific tests, please use command sample - python tests\test_rule_extraction.py (The results should mostly appear in terminal)
+11. To run specific tests, please use command sample - python test\test_rule_extraction.py (The results should mostly appear in terminal)
    ```
 
 ## 🏗️ Tech Stack
