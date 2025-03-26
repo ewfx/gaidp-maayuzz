@@ -5,7 +5,7 @@
 4. Create a python venv (after going inside the "code" directory using this command in terminal  - python -m venv venv
 5. Activate the venv using this command - venv\Scripts\activate  
 6. pip install everything from the requirements.txt (Please wait for 3 to 4 minutes for it to install)
-7. In the .env file present in root directory, please paste your Hugging Face API token(Do not paste your token in "", Sample code line in the .env file is : 
+7. In the .env file present/create a .env file in root directory("code" directory), please paste your Hugging Face API token(Do not paste your token in "", Sample code line(and the only code line to be added) in the .env file is : 
 HUGGINGFACE_API_KEY=hf_XXXXXXXXXXiR). (To generate a token, go to huggingface.co and create the access token, give read access)
 8. To run the streamlit app, please use command - streamlit run app.py
 9. Please upload a .txt file in the streamlit Ui for regulatory instructions, I am uploading the sample txt I used in inputs folder in my artifacts.
