@@ -28,21 +28,69 @@ What struck me most was the disconnect between the intelligence of financial pro
 I wanted to create a solution that bridges this gap—leveraging AI to automate the tedious parts of compliance while amplifying human expertise. By combining GenAI's ability to interpret regulatory text with ML's talent for spotting anomalies, my system helps compliance teams focus on what truly matters: ensuring their data tells the right story to regulators.
 
 ## ⚙️ What It Does
-My regulatory compliance automation system streamlines the entire securities reporting process through five integrated capabilities:
-First, it processes regulatory documents using natural language processing to extract structured validation requirements. The rule extraction engine then transforms these requirements into executable validation rules, eliminating the need for manual rule definition.
-The data validation component applies these rules to securities data, identifying non-compliant records and specific violations. Complementing this rule-based approach, the unsupervised anomaly detection system identifies statistical outliers using Isolation Forest algorithms, flagging unusual patterns that might escape traditional rule checking.
-For any compliance issues detected, the remediation engine generates actionable suggestions, explaining the underlying regulatory requirement and recommending specific data corrections. All of these components are accessible through both a structured dashboard interface and a conversational assistant that allows users to interact with the system using natural language.
-The solution maintains an adaptive rule repository that evolves based on regulatory changes and user feedback, ensuring continuous compliance improvement over time. This comprehensive approach reduces validation time from days to minutes while significantly improving accuracy and providing auditable documentation of the entire compliance process.
+My regulatory compliance automation system streamlines the entire securities reporting process through the following integrated capabilities:
+### 1. **Automated Regulatory Document Processing**  
+- Utilizes natural language processing (NLP) through Hugging Face inference API leveraging Mistral-7B-Instruct-v0.2 to extract structured validation requirements from regulatory documents.  
+- Eliminates manual effort in interpreting compliance requirements.  
+
+### 2. **Transformation of Rules into Executable Validation Logic**  
+- A rule extraction engine converts extracted regulatory requirements into executable validation rules.  
+- Removes the need for manual rule definition, ensuring consistency and efficiency.  
+
+### 3. **Automated Data Validation for Compliance Checks**  
+- Applies generated validation rules to securities data.  
+- Identifies non-compliant records and specific violations efficiently.  
+
+### 4. **Anomaly Detection Using Advanced Machine Learning**  
+- Implements an unsupervised anomaly detection system with Isolation Forest algorithms.  
+- Flags statistical outliers and unusual patterns that traditional rule-based checks might miss.  
+
+### 5. **Automated Compliance Issue Remediation**  
+- A remediation engine generates actionable suggestions for resolving detected compliance issues.  
+- Provides explanations of underlying regulatory requirements and recommends data corrections.  
+
+### 6. **User-Friendly Interaction and Accessibility**  
+- Features both a structured dashboard interface and a conversational assistant.  
+- Enables users to interact with the system using natural language for ease of access.  
+
+### 7. **Continuous Adaptation to Regulatory Changes**  
+- Maintains an adaptive rule repository that evolves with regulatory updates and user feedback.  
+- Ensures ongoing compliance improvement over time.  
+
+### 8. **Enhanced Efficiency and Accuracy in Compliance Processes**  
+- Reduces validation time from days to minutes.  
+- Improves accuracy and ensures auditable documentation of the entire compliance process.  
 
 ## 🛠️ How We Built It
-To create this regulatory compliance automation system, I leveraged a strategic combination of technologies:
-For the core architecture, I designed a modular Python framework with separate components for document processing, rule extraction, data validation, anomaly detection, and remediation generation. This approach ensured clear separation of concerns and allowed for independent testing of each component.
-The natural language processing capabilities were implemented using Hugging Face's Inference API, specifically employing the Mistral-7B-Instruct-v0.2 model, which provided the right balance of performance and accuracy for regulatory text interpretation.
-For anomaly detection, I implemented scikit-learn's Isolation Forest algorithm, which efficiently identifies outliers in high-dimensional data without requiring labeled training examples.
-Data processing was handled through pandas for structured data manipulation, while the validation logic was implemented as dynamically generated Python code that executes against the data.
-The user interface was built with Streamlit, enabling rapid development of an interactive dashboard that visualizes compliance results and provides remediation suggestions.
-For persistence, I implemented a JSON-based rule storage system, and the entire application was structured to enable modular testing using Python's unittest framework.
-This technical architecture enables a flexible, maintainable solution that can adapt to different regulatory frameworks while maintaining consistent performance and accuracy.
+To build the regulatory compliance automation system, I strategically combined various technologies and methodologies to ensure accuracy, flexibility, and maintainability. The system was designed with a modular architecture, leveraging advanced natural language processing, machine learning, and data processing techniques. Below are the key components of the technical implementation:  
+
+### 1. **Modular Python Framework for Core Architecture**  
+- Designed a modular Python framework with distinct components for document processing, rule extraction, data validation, anomaly detection, and remediation generation.  
+- Ensured clear separation of concerns, allowing independent testing and scalability.  
+
+### 2. **Natural Language Processing for Regulatory Text Interpretation**  
+- Integrated Hugging Face's Inference API with the Mistral-7B-Instruct-v0.2 model.  
+- Achieved a balance between performance and accuracy for extracting compliance requirements from regulatory text.  
+
+### 3. **Machine Learning-Based Anomaly Detection**  
+- Implemented scikit-learn’s Isolation Forest algorithm to detect statistical anomalies in high-dimensional data.  
+- Effectively identified outliers without requiring labeled training examples.  
+
+### 4. **Data Processing and Validation Execution**  
+- Utilized pandas for efficient structured data manipulation and preprocessing.  
+- Validation logic was implemented as dynamically generated Python code that executes against real-time data.  
+
+### 5. **User-Friendly Interactive Dashboard**  
+- Built the user interface using Streamlit for rapid prototyping and interactive visualization.  
+- Enabled users to view compliance results and access remediation suggestions through an intuitive dashboard.  
+
+### 6. **Efficient Rule Storage and Persistence Mechanism**  
+- Developed a JSON-based rule storage system for maintaining extracted and dynamically generated compliance rules.  
+- Ensured flexibility and easy updates to validation rules as regulations evolve.  
+
+### 7. **Automated Testing and Maintainability**  
+- Structured the application to support modular testing using Python’s unittest framework.  
+- Facilitated maintainability, allowing seamless adaptation to different regulatory frameworks while ensuring consistent performance and accuracy.
 
 ## 🚧 Challenges We Faced
 Developing this regulatory compliance automation system presented several significant challenges. The most formidable technical hurdle was extracting precise validation rules from regulatory documents, which often contain ambiguous language and implicit requirements. I experimented with multiple prompt engineering approaches to guide the language model toward generating executable validation code rather than merely summarizing regulations.
@@ -56,7 +104,7 @@ Integrating the conversational interface with the technical backend proved chall
 3. Create a new branch if you wish
 4. Create a python venv using this command in terminal  - python -m venv venv
 5. Activate the venv using this command - venv\Scripts\activate  
-6. pip install everything from the requirements.txt
+6. pip install everything from the requirements.txt (Please wait for 3 to 4 minutes for it to install)
 7. In the .env file present in root directory, please paste your Hugging Face API token(Do not paste your token in "", Sample code line in the .env file is : 
 HUGGINGFACE_API_KEY=hf_XXXXXXXXXXiR). (To generate a token, go to huggingface.co and create the access token, give read access)
 8. To run the streamlit app, please use command - streamlit run app.py
@@ -77,4 +125,4 @@ HUGGINGFACE_API_KEY=hf_XXXXXXXXXXiR). (To generate a token, go to huggingface.co
 ## 👥 Team
 - Team Name - Maayuzz
 - Syed Maaiz Syed Shabbeer Basha - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#) test new
+
