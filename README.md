@@ -17,11 +17,9 @@
 I've developed an innovative solution that transforms how financial institutions handle regulatory compliance. My system uses Generative AI to automatically extract validation rules from complex regulatory documents and applies them to securities data with precision. By combining rule-based validation with machine learning anomaly detection, my tool identifies both explicit violations and subtle statistical outliers that traditional methods might miss. When issues are found, the system generates specific remediation suggestions, explaining not just what to fix but why it matters for compliance. What makes this approach unique is its adaptability—as regulations evolve, the system learns and updates without manual recoding. The conversational interface I've built makes complex compliance tasks accessible even to users without technical expertise, allowing them to interact naturally with the system and refine rules through dialogue. This solution transforms regulatory reporting from a time-consuming burden into a streamlined, accurate process that helps financial institutions stay ahead of compliance requirements.
 
 ## 🎥 Demo
-🔗 [Live Demo](#) (if applicable)  Please check my artifacts/demo folder for a live video and the presentation that was used.
-📹 [Video Demo](#) (if applicable)  
-🖼️ Screenshots: Please check my artifacts/resultsamples folder for UI and result screenshots
+📹 [Video Demo](https://drive.google.com/file/d/1OEbYmvn8c5XKv-VwvFgUkNhLYS77nBov/view?usp=drive_link) (Video starts with a quick presentation then working demo)  
+🖼️ [Screenshots](https://drive.google.com/file/d/1-IB7SNBfuAITRo0rWFJe_apkCyCIJh_2/view?usp=sharing) (Please check my artifacts/resultsamples folder for other UI and result screenshots)
 
-![Screenshot 1](link-to-image)
 
 ## 💡 Inspiration
 What struck me most was the disconnect between the intelligence of financial professionals and the rudimentary tools they were using. These experts understand complex regulations intuitively, yet they're forced to translate that understanding into rigid, hand-coded validation rules that can't adapt to new scenarios.
