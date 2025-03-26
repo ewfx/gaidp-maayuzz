@@ -1,0 +1,8 @@
+/*/newvenv/*
+*newvenv
+/*/__pycache__/*
+*__pycache__/
+/*/.env/*
+*.env
+/*/rules/*
+*rules
