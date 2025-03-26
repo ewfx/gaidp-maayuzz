@@ -1,0 +1,301 @@
+Saved 19 rules to test_rules\Schedule_B_Securities_20250326_005529.json
+Loaded 19 rules from test_rules\Schedule_B_Securities_20250326_005529.json
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Applying rule: rule_1_IdentifierType - Validation for IdentifierType
+Applying rule: rule_1_MarketFaceValue - Validation for MarketFaceValue
+Applying rule: rule_1_MarketFaceValue_1 - Validation for MarketFaceValue
+Applying rule: rule_1_PrivatePlacement - Validation for PrivatePlacement
+Applying rule: rule_1_PrivatePlacement_1 - Validation for PrivatePlacement
+Error applying rule rule_1_PrivatePlacement_1: 'validate_rule'
+Applying rule: rule_1_Security_Description_1 - Validation for Security_Description_1
+Applying rule: rule_1_Security_Description_1_1 - Validation for Security_Description_1
+Applying rule: rule_1_UniqueId - Validation for UniqueId
+Applying rule: rule_1_UniqueId_1 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_2 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Applying rule: rule_2_AmortizedCost_MarketFaceValue - Validation for AmortizedCost, MarketFaceValue
+Applying rule: rule_2_IdentifierType_IdentifierValue - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_2_IdentifierType_IdentifierValue_1 - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_2_IdentifierType_IdentifierValue_2 - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_3_Security_Description_1_Security_Description_2_Security_Description_3 - Validation for Security_Description_1, Security_Description_2, Security_Description_3
+Fitted anomaly detection model on 5 records with 5 features
+Generating remediation suggestions for 1 anomalous records
+
+Anomaly Remediation Suggestions:
+
+Anomaly at index 4 (ID: ID005):
+  Anomaly Score: -0.0055
+  Anomalous Features:
+    Accounting_Intent: HOLD (Least common value)
+  Remediation Suggestion:
+    Fields to update: ['Accounting_Intent']
+    Suggested values: ['RELEASE']
+    Explanation: The Accounting_Intent field value 'HOLD' is an anomaly as it is the least common value in the dataset. Changing it to the most common value 'RELEASE' will bring it in line with the majority of records and resolve the anomaly.
+.Saved 19 rules to test_rules\Schedule_B_Securities_20250326_005553.json
+Loaded 19 rules from test_rules\Schedule_B_Securities_20250326_005553.json
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+lue 'RELEASE' will bring it in line with the majority of records and resolve the anomaly.
+.Saved 19 rules to test_rules\Schedule_B_Securities_20250326_005553.json
+Loaded 19 rules from test_rules\Schedule_B_Securities_20250326_005553.json
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+.Saved 19 rules to test_rules\Schedule_B_Securities_20250326_005553.json
+Loaded 19 rules from test_rules\Schedule_B_Securities_20250326_005553.json
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Loaded 19 rules from test_rules\Schedule_B_Securities_20250326_005553.json
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Applying rule: rule_1_IdentifierType - Validation for IdentifierType
+Applying rule: rule_1_MarketFaceValue - Validation for MarketFaceValue
+Applying rule: rule_1_AmortizedCost_1 - Validation for AmortizedCost
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Applying rule: rule_1_IdentifierType - Validation for IdentifierType
+Applying rule: rule_1_MarketFaceValue - Validation for MarketFaceValue
+Applying rule: rule_1_MarketFaceValue_1 - Validation for MarketFaceValue
+Applying rule: rule_1_AmortizedCost_2 - Validation for AmortizedCost
+Applying rule: rule_1_IdentifierType - Validation for IdentifierType
+Applying rule: rule_1_MarketFaceValue - Validation for MarketFaceValue
+Applying rule: rule_1_MarketFaceValue_1 - Validation for MarketFaceValue
+Applying rule: rule_1_IdentifierType - Validation for IdentifierType
+Applying rule: rule_1_MarketFaceValue - Validation for MarketFaceValue
+Applying rule: rule_1_MarketFaceValue_1 - Validation for MarketFaceValue
+Applying rule: rule_1_MarketFaceValue_1 - Validation for MarketFaceValue
+Applying rule: rule_1_PrivatePlacement - Validation for PrivatePlacement
+Applying rule: rule_1_PrivatePlacement_1 - Validation for PrivatePlacement
+Error applying rule rule_1_PrivatePlacement_1: 'validate_rule'
+Applying rule: rule_1_Security_Description_1 - Validation for Security_Description_1
+Applying rule: rule_1_Security_Description_1_1 - Validation for Security_Description_1
+Applying rule: rule_1_UniqueId - Validation for UniqueId
+Applying rule: rule_1_UniqueId_1 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_2 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Error applying rule rule_1_PrivatePlacement_1: 'validate_rule'
+Applying rule: rule_1_Security_Description_1 - Validation for Security_Description_1
+Applying rule: rule_1_Security_Description_1_1 - Validation for Security_Description_1
+Applying rule: rule_1_UniqueId - Validation for UniqueId
+Applying rule: rule_1_UniqueId_1 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_2 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Applying rule: rule_1_UniqueId - Validation for UniqueId
+Applying rule: rule_1_UniqueId_1 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_2 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_2 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Applying rule: rule_1_UniqueId_3 - Validation for UniqueId
+Applying rule: rule_2_AmortizedCost_MarketFaceValue - Validation for AmortizedCost, MarketFaceValue
+Applying rule: rule_2_IdentifierType_IdentifierValue - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_2_IdentifierType_IdentifierValue_1 - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_2_IdentifierType_IdentifierValue_2 - Validation for IdentifierType, IdentifierValue
+Applying rule: rule_3_Security_Description_1_Security_Description_2_Security_Description_3 - Validation for Security_Description_1, Security_Description_2, Security_Description_3
+Fitted anomaly detection model on 5 records with 5 features
+Generating remediation suggestions for 5 records
+
+Validation Remediation Suggestions:
+
+Record 0 (ID: ID001):
+  Failed Rules: rule_1_AmortizedCost, rule_1_AmortizedCost_1, rule_1_AmortizedCost_2, rule_1_IdentifierType, rule_1_MarketFaceValue, rule_1_MarketFaceValue_1, rule_1_PrivatePlacement, rule_1_Security_Description_1, rule_1_Security_Description_1_1, rule_1_UniqueId, rule_1_UniqueId_1, rule_1_UniqueId_2, rule_1_UniqueId_3, rule_2_AmortizedCost_MarketFaceValue, rule_2_IdentifierType_IdentifierValue, rule_2_IdentifierType_IdentifierValue_1, rule_2_IdentifierType_IdentifierValue_2, rule_3_Security_Description_1_Security_Description_2_Security_Description_3
+  Suggestion for Validation for AmortizedCost:
+    Fields to update: ['AmortizedCost']
+    Suggested values: [10000]
+    Explanation: The AmortizedCost value '5000' is outside the acceptable range for this validation rule. Based on the rule description, the AmortizedCost should fall within a specific range. To resolve this issue, update the AmortizedCost value to a number within the acceptable range, such as '10000'. This change will ensure that the record complies with the validation rule.
+  Suggestion for Validation for IdentifierType:
+    Fields to update: ['IdentifierType']
+    Suggested values: {'IdentifierType': 'ISIN'}
+    Explanation: The IdentifierType field in the current record is set to 'CUSIP', which is not one of the allowed values ['CUSIP', 'ISIN', 'SEDOL']. To resolve this issue, update the IdentifierType field to a valid value, such as 'ISIN'.
+  Suggestion for Validation for MarketFaceValue:
+    Fields to update: ['MarketFaceValue']
+    Suggested values: [45.0]
+    Explanation: The MarketFaceValue field in the record with ID001 needs to be updated to a value within the specified range. In this case, a suggested value of 45.0 is provided as an example. This change will resolve the validation issue as the new value will fall within the acceptable range.
+  Suggestion for Validation for PrivatePlacement:
+    Fields to update: ['PrivatePlacement']
+    Suggested values: {'PrivatePlacement': 'N'}
+    Explanation: The PrivatePlacement field should be set to 'N' to meet the validation rule requirement that it should be false.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Enter a valid description for this security']
+    Explanation: The validation rule for Security_Description_1 requires that it cannot be empty. In the current record, this field is empty, causing the validation to fail. To resolve this issue, please enter a valid description for the security.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Equity', 'Bond', 'MutualFund']
+    Explanation: The Security_Description_1 field value '123456789' is not in the predefined list of values for this rule. The predefined list includes 'Equity', 'Bond', and 'MutualFund'. Updating the Security_Description_1 field value to one of these options will resolve the issue.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID002']
+    Explanation: The UniqueId 'ID001' already exists in the dataset. To resolve the validation error, please update the UniqueId for this record to a new unique value, such as 'ID002'. This change will ensure that each record has a unique UniqueId, satisfying the validation rule.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['new_unique_id']
+    Explanation: The UniqueId 'ID001' already exists in the database, causing a duplicate record error. To resolve this issue, please update the UniqueId to a new unique value, such as 'new_unique_id'. This change will ensure that each record has a unique identifier, allowing the data to be validated and processed correctly.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID002']
+    Explanation: The UniqueId 'ID001' failed the validation rule as it is not the same as the previous period's UniqueId. To resolve this issue, update the UniqueId to a new value such as 'ID002'. This change will ensure that the validation rule is met and the record can be processed correctly.
+  Suggestion for Validation for IdentifierType, IdentifierValue:
+    Fields to update: ['IdentifierType', 'IdentifierValue']
+    Suggested values: {'IdentifierType': 'ISIN', 'IdentifierValue': 'IE00B1234567'}
+    Explanation: The current IdentifierValue '123456789' does not match the expected CUSIP pattern. To resolve this issue, update the IdentifierType to ISIN and provide a valid ISIN number, such as 'IE00B1234567'. This change will ensure the record passes the data validation rules.
+  Suggestion for Validation for Security_Description_1, Security_Description_2, Security_Description_3:
+    Fields to update: ['Security_Description_1', 'Security_Description_2', 'Security_Description_3']
+    Suggested values: ['Description 1 with valid length', 'Description 2 with valid length', 'Description 3 with valid length']
+    Explanation: The validation rule for Security_Description_1, Security_Description_2, and Security_Description_3 fields states that the length of these fields should not exceed a specified limit. The current record values for these fields are longer than the specified limit. To resolve this issue, update the values of these fields with valid descriptions that meet the specified length limit.
+
+Record 1 (ID: ID002):
+  Failed Rules: rule_1_AmortizedCost, rule_1_AmortizedCost_1, rule_1_AmortizedCost_2, rule_1_IdentifierType, rule_1_MarketFaceValue, rule_1_MarketFaceValue_1, rule_1_PrivatePlacement, rule_1_Security_Description_1, rule_1_Security_Description_1_1, rule_1_UniqueId, rule_1_UniqueId_1, rule_1_UniqueId_2, rule_1_UniqueId_3, rule_2_AmortizedCost_MarketFaceValue, rule_2_IdentifierType_IdentifierValue, rule_2_IdentifierType_IdentifierValue_1, rule_2_IdentifierType_IdentifierValue_2, rule_3_Security_Description_1_Security_Description_2_Security_Description_3
+  Suggestion for Validation for PrivatePlacement:
+    Fields to update: ['PrivatePlacement']
+    Suggested values: ['false']
+    Explanation: The PrivatePlacement field should be set to 'false' to meet the validation rule requirement. The current value 'N' is not meeting the requirement, hence the validation failure.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Enter a valid description for the security']
+    Explanation: The validation rule for Security_Description_1 requires that it cannot be empty. In the current record, this field is empty, causing the validation to fail. To resolve this issue, please enter a valid description for the security in the Security_Description_1 field.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Equity', 'Bond', 'MutualFund', 'ETF']
+    Explanation: The Security_Description_1 field value 'HTM' is not in the predefined list of allowed values for this rule. The allowed values are 'Equity', 'Bond', 'MutualFund', and 'ETF'. Updating the Security_Description_1 field value to one of these allowed values will resolve the issue.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['US123456789-ISIN']
+    Explanation: The UniqueId field value 'ID002' does not follow the expected format of 'alphanumeric-Identifier_Type'. To resolve this issue, update the UniqueId field value to 'US123456789-ISIN' which follows the expected format.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['US123456790']
+    Explanation: Update the UniqueId value to a new unique value to resolve the validation issue. The current value 'US123456789' already exists in the database, causing the validation rule to fail as it must be unique across all records.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID003']
+    Explanation: The UniqueId 'US123456789' failed the validation rule as it is not the same as the previous period's UniqueId. To resolve this issue, update the UniqueId to a new value such as 'ID003' to ensure uniqueness and compliance with the validation rule.
+
+Record 2 (ID: ID003):
+  Failed Rules: rule_1_AmortizedCost, rule_1_AmortizedCost_1, rule_1_AmortizedCost_2, rule_1_IdentifierType, rule_1_MarketFaceValue, rule_1_MarketFaceValue_1, rule_1_PrivatePlacement, rule_1_Security_Description_1, rule_1_Security_Description_1_1, rule_1_UniqueId, rule_1_UniqueId_1, rule_1_UniqueId_2, rule_1_UniqueId_3, rule_2_AmortizedCost_MarketFaceValue, rule_2_IdentifierType_IdentifierValue, rule_2_IdentifierType_IdentifierValue_1, rule_2_IdentifierType_IdentifierValue_2, rule_3_Security_Description_1_Security_Description_2_Security_Description_3
+  Suggestion for Validation for AmortizedCost:
+    Fields to update: ['AmortizedCost']
+    Suggested values: [0]
+    Explanation: The AmortizedCost field value 'XXX' is not within the valid range of 0 to MarketFaceValue. To resolve this issue, update the AmortizedCost field to a value of 0.
+  Suggestion for Validation for PrivatePlacement:
+    Fields to update: ['PrivatePlacement']
+    Suggested values: {'PrivatePlacement': 'N'}
+    Explanation: The PrivatePlacement field should be set to 'N' to meet the validation rule requirement that it should be false.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Enter a valid description for the security']
+    Explanation: The validation rule for Security_Description_1 requires that it cannot be empty. In the current record, this field is empty, causing the validation to fail. To resolve this issue, please enter a valid description for the security in the Security_Description_1 field.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Equity', 'Bond', 'Mutual Fund', 'ETF']
+    Explanation: The Security_Description_1 field value '987654321' does not match any of the predefined list of values for this rule. To resolve this issue, update the Security_Description_1 field value to one of the following predefined values: Equity, Bond, Mutual Fund, or ETF.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID004']
+    Explanation: The UniqueId 'ID003' already exists in the dataset. To resolve the validation error, update the UniqueId for this record to a new and unique value, such as 'ID004'. This change will ensure that each record in the dataset has a unique UniqueId.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID004']
+    Explanation: The UniqueId 'ID003' failed the validation rule as it does not follow the expected format. To resolve this issue, update the UniqueId to a new value, such as 'ID004', that conforms to the expected format. This change will ensure that the record passes the validation check.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID004']
+    Explanation: Update the UniqueId value to a new unique value, such as 'ID004', to resolve the validation issue for this record. The new value should not already exist in the database to ensure uniqueness.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID004']
+    Explanation: The UniqueId 'ID003' failed the validation rule as it is not the same as the previous record. To resolve this issue, update the UniqueId to a new value, such as 'ID004', which is not a duplicate. This change will ensure that the validation rule is met and the record can be processed correctly.
+  Suggestion for Validation for IdentifierType, IdentifierValue:
+    Fields to update: ['IdentifierType', 'IdentifierValue']
+    Suggested values: {'IdentifierType': 'RID', 'IdentifierValue': 'ABCDEFG-1234-5678-90AB-CDEF12345678'}
+    Explanation: Update the IdentifierType to a valid security identifier type, such as RID, and the IdentifierValue to a valid security identifier value, such as a randomly generated GUID. This change will resolve the issue as the current IdentifierType (SEDOL) and IdentifierValue (987654321) are not valid security identifiers.
+
+Record 3 (ID: ID004):
+  Failed Rules: rule_1_AmortizedCost, rule_1_AmortizedCost_1, rule_1_AmortizedCost_2, rule_1_IdentifierType, rule_1_MarketFaceValue, rule_1_MarketFaceValue_1, rule_1_PrivatePlacement, rule_1_Security_Description_1, rule_1_Security_Description_1_1, rule_1_UniqueId, rule_1_UniqueId_1, rule_1_UniqueId_2, rule_1_UniqueId_3, rule_2_AmortizedCost_MarketFaceValue, rule_2_IdentifierType_IdentifierValue, rule_2_IdentifierType_IdentifierValue_1, rule_2_IdentifierType_IdentifierValue_2, rule_3_Security_Description_1_Security_Description_2_Security_Description_3
+  Suggestion for Validation for IdentifierType:
+    Fields to update: ['IdentifierType']
+    Suggested values: {'IdentifierType': 'ISIN'}
+    Explanation: The IdentifierType field in the current record is set to 'CUSIP', which is not one of the allowed values ['CUSIP', 'ISIN', 'SEDOL']. To resolve this issue, update the IdentifierType field to one of the allowed values, such as 'ISIN'.
+  Suggestion for Validation for PrivatePlacement:
+    Fields to update: ['PrivatePlacement']
+    Suggested values: {'PrivatePlacement': 'False'}
+    Explanation: The PrivatePlacement field should be set to 'False' to meet the validation rule requirement. The current value 'X' is causing the rule to fail.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Enter a valid description for this security']
+    Explanation: The validation rule for Security_Description_1 requires that it cannot be empty. In the current record, this field is empty, causing the validation to fail. To resolve this issue, please enter a valid description for this security.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Equity', 'Bond', 'MutualFund']
+    Explanation: The Security_Description_1 field value '123456ABC' is not in the predefined list of values for this rule. The suggested values are 'Equity', 'Bond', or 'MutualFund'. Updating the Security_Description_1 field to one of these values will resolve the issue.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ValidUniqueId']
+    Explanation: The UniqueId 'ID004' does not follow the expected format for this field. It should be updated to a valid format, such as 'ValidUniqueId'. This change will ensure that the record passes the validation rule for UniqueId.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID005']
+    Explanation: The UniqueId 'ID004' failed the validation rule as it is not the same as the previous record. To resolve this issue, update the UniqueId to a new value, such as 'ID005', which is not identical to the previous record. This change will ensure that the validation rule is met and the record can be processed correctly.
+  Suggestion for Validation for AmortizedCost, MarketFaceValue:
+    Fields to update: ['AmortizedCost']
+    Suggested values: [25000]
+    Explanation: The AmortizedCost (25000) should be less than or equal to MarketFaceValue (which is not provided in the record). To resolve this issue, update the AmortizedCost to be less than or equal to MarketFaceValue.
+  Suggestion for Validation for IdentifierType, IdentifierValue:
+    Fields to update: ['IdentifierType', 'IdentifierValue']
+    Suggested values: {'IdentifierType': 'ISIN', 'IdentifierValue': 'IE00BHXL2Q21'}
+    Explanation: The current IdentifierValue '123456ABC' does not match the expected CUSIP pattern. To resolve this issue, update the IdentifierType to ISIN and provide a valid ISIN number, such as 'IE00BHXL2Q21'. This change will ensure the record complies with the data validation rule.
+  Suggestion for Validation for Security_Description_1, Security_Description_2, Security_Description_3:
+    Fields to update: ['Security_Description_1', 'Security_Description_2', 'Security_Description_3']
+    Suggested values: ['New_Security_Description_1', 'New_Security_Description_2', 'New_Security_Description_3']
+    Explanation: The validation rule for Security_Description_1, Security_Description_2, and Security_Description_3 fields states that they must not exceed a specified length. The current record values exceed this length. To resolve this issue, update the values of these fields with new values that meet the specified length requirement.
+
+Record 4 (ID: ID005):
+  Failed Rules: rule_1_AmortizedCost, rule_1_AmortizedCost_1, rule_1_AmortizedCost_2, rule_1_IdentifierType, rule_1_MarketFaceValue, rule_1_MarketFaceValue_1, rule_1_PrivatePlacement, rule_1_Security_Description_1, rule_1_Security_Description_1_1, rule_1_UniqueId, rule_1_UniqueId_1, rule_1_UniqueId_2, rule_1_UniqueId_3, rule_2_AmortizedCost_MarketFaceValue, rule_2_IdentifierType_IdentifierValue, rule_2_IdentifierType_IdentifierValue_1, rule_2_IdentifierType_IdentifierValue_2, rule_3_Security_Description_1_Security_Description_2_Security_Description_3
+  Suggestion for Validation for AmortizedCost:
+    Fields to update: ['AmortizedCost']
+    Suggested values: [0]
+    Explanation: The AmortizedCost field value 'XXX' is not within the valid range of 0 to MarketFaceValue. To resolve this issue, update the AmortizedCost field to a value of 0. This will ensure that the record complies with the data validation rule.
+  Suggestion for Validation for IdentifierType:
+    Fields to update: ['IdentifierType']
+    Suggested values: {'IdentifierType': 'CUSIP'}
+    Explanation: The IdentifierType field should be updated to a valid value, such as 'CUSIP', 'ISIN', or 'SEDOL'. In this case, the suggested value is 'CUSIP'. This change will resolve the issue as the validation rule requires IdentifierType to be one of these three values.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Enter a valid description for the security']
+    Explanation: The validation rule for Security_Description_1 requires that it cannot be empty. In the current record, this field is empty, causing the validation to fail. To resolve this issue, please enter a valid description for the security.
+  Suggestion for Validation for Security_Description_1:
+    Fields to update: ['Security_Description_1']
+    Suggested values: ['Equity', 'Bond', 'Cash', 'Derivative']
+    Explanation: The Security_Description_1 field value 'HOLD' is not in the predefined list of allowed values. Update it to one of the following values: Equity, Bond, Cash, or Derivative.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID006']
+    Explanation: The UniqueId 'ID005' failed the validation rule for UniqueId, which requires a specific format. To resolve this issue, update the UniqueId to a new value, such as 'ID006', that follows the required format. This change will ensure that the record passes the validation check and can be processed correctly.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID006']
+    Explanation: Update the UniqueId value to a new unique value, such as 'ID006', to resolve the validation issue for this record. The validation rule requires that UniqueId must be unique across all records, and the current value already exists in the database. Changing the value to a new unique one will allow the record to pass validation.
+  Suggestion for Validation for UniqueId:
+    Fields to update: ['UniqueId']
+    Suggested values: ['ID006']
+    Explanation: The UniqueId 'ID005' failed the validation rule as it does not remain the same from one period to the next. To resolve this issue, update the UniqueId to a new unique value, such as 'ID006'. This change will ensure that the validation rule is met and the record will be processed correctly.
+  Suggestion for Validation for AmortizedCost, MarketFaceValue:
+    Fields to update: ['AmortizedCost', 'MarketFaceValue']
+    Suggested values: {'AmortizedCost': 15000, 'MarketFaceValue': 20000}
+    Explanation: Update AmortizedCost to be less than or equal to MarketFaceValue (15000 <= 20000). This change will resolve the data validation issue.  
+  Suggestion for Validation for IdentifierType, IdentifierValue:
+    Fields to update: ['IdentifierType', 'IdentifierValue']
+    Suggested values: {'IdentifierType': 'SID_TYPE_S_1_1_1_2_2_2_1_5_1', 'IdentifierValue': 'S-1-5-21-Domain-Name-OU'}
+    Explanation: Update the IdentifierType to a valid Security Identifier Type (SID Type) and the IdentifierValue to a valid Security Identifier (SID). This change will resolve the issue as the validation rule requires the IdentifierType and IdentifierValue to be a valid Security Identifier Type and Value.
+.
+----------------------------------------------------------------------
+Ran 2 tests in 471.705s
+
+OK

@@ -1,0 +1,19 @@
+SCHEDULE B—SECURITIES
+
+Each BHC or IHC or SLHC should submit the two schedules comprising the FRY-14 Quarterly Securities data.
+
+UNIQUE ID
+
+A unique identifier must be included to identify each unique record. For a given security position, the same Unique ID should be used from one period to the next.
+
+IDENTIFIER TYPE AND IDENTIFIER VALUE
+
+Report individual security-level data for all securities. Generally, securities should always be reported with a public identifier, if available, such as CUSIP, ISIN, or SEDOL.
+
+PRIVATE PLACEMENT
+
+Please enter "Y" if the security is a private placement security or "N" if it is a publicly offered security.
+
+ACCOUNTING INTENT
+
+Indicate whether the security is available-for-sale (AFS) or held-to-maturity (HTM).

@@ -1,0 +1,578 @@
+{
+  "metadata": {
+    "source": "Regulatory Rules",
+    "extraction_date": "2025-03-26T00:34:05.490479",
+    "rule_count": 47
+  },
+  "rules": [
+    {
+      "id": "rule_1_AmortizedCost",
+      "name": "Validation for AmortizedCost",
+      "description": {
+        "min": 0,
+        "max": null
+      },
+      "source_section": "Security Description",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "range_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row:\n                        return False\n                        \n                    if pd.isna(row['AmortizedCost']):\n                        return False\n                        \n                    value = row['AmortizedCost']\n                    if not isinstance(value, (int, float)):\n                        return False\n                        \n                    if value < 0:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_1",
+      "name": "Validation for AmortizedCost",
+      "description": "AmortizedCost field should not be empty",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row:\n                        return False\n                        \n                    if pd.isna(row['AmortizedCost']):\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_2",
+      "name": "Validation for AmortizedCost",
+      "description": "If PrivatePlacement is true, AmortizedCost should be present",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'PrivatePlacement' not in row:\n                        return False\n                        \n                    if pd.isna(row['PrivatePlacement']):\n                        return False\n                        \n                    if not isinstance(row['PrivatePlacement'], bool):\n                        return False\n                        \n                    if row['PrivatePlacement']:\n                        if 'AmortizedCost' not in row:\n                            return False\n                            # Raise a custom error if AmortizedCost is missing\n                            raise ValueError(\"AmortizedCost is missing when PrivatePlacement is true\")\n                        \n                        if pd.isna(row['AmortizedCost']):\n                            return False\n                            # Raise a custom error if AmortizedCost is missing\n                            raise ValueError(\"AmortizedCost is missing when PrivatePlacement is true\")\n                        \n                        if not isinstance(row['AmortizedCost'], (int, float)):\n                            return False\n                            # Raise a custom error if AmortizedCost is not a number\n                            raise TypeError(\"AmortizedCost must be a number\")\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_3",
+      "name": "Validation for AmortizedCost",
+      "description": "If IdentifierType is 'SecuritizationDebt', AmortizedCost should be present",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierType']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n                        \n                    if row['IdentifierType'] != 'SecuritizationDebt':\n                        return True\n                        \n                    if 'AmortizedCost' not in row:\n                        return False\n                        \n                    if pd.isna(row['AmortizedCost']):\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_4",
+      "name": "Validation for AmortizedCost",
+      "description": "AmortizedCost should be a number",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row:\n                        return False\n                        \n                    if pd.isna(row['AmortizedCost']):\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_5",
+      "name": "Validation for AmortizedCost",
+      "description": "If reported_book_yield is present, AmortizedCost should be calculated based on reported_book_yield",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'reported_book_yield' not in row:\n                        return True\n                        \n                    if 'AmortizedCost' not in row:\n                        return False\n                        \n                    if pd.isna(row['reported_book_yield']):\n                        return True\n                        \n                    if not isinstance(row['reported_book_yield'], (float, int)):\n                        return False\n                        \n                    if 'reported_book_yield' in row and 'AmortizedCost' in row:\n                        if pd.isna(row['AmortizedCost']):\n                            return False\n                            error_message = \"AmortizedCost is missing when reported_book_yield is present.\"\n                            raise ValueError(error_message)\n                        \n                        if not isinstance(row['AmortizedCost'], (float, int)):\n                            return False\n                            error_message = \"AmortizedCost must be a number.\"\n                            raise TypeError(error_message)\n\n                        calculated_amortized_cost = row['reported_book_yield'] * row['Quantity']\n                        if abs(calculated_amortized_cost - row['AmortizedCost']) > 1e-6:\n                            error_message = \"Calculated AmortizedCost does not match the reported value.\"\n                            raise ValueError(error_message)\n\n                    return True"
+    },
+    {
+      "id": "rule_1_AmortizedCost_6",
+      "name": "Validation for AmortizedCost",
+      "description": "The AmortizedCost field should be within a valid range.",
+      "source_section": "Purchase Date \r\nReport the date on which the security was purchased or acquired in the case of credit \r\nsensitive securities that are evaluated for credit loss purposes in accordance with ASC Topic",
+      "fields": [
+        "AmortizedCost"
+      ],
+      "type": "range_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row or 'MarketFaceValue' not in row:\n                        return False\n                        \n                    amortized_cost = row['AmortizedCost']\n                    market_face_value = row['MarketFaceValue']\n                    \n                    if pd.isna(amortized_cost) or pd.isna(market_face_value):\n                        return False\n                        \n                    if not isinstance(amortized_cost, (int, float)) or not isinstance(market_face_value, (int, float)):\n                        return False\n                        \n                    if amortized_cost < 0 or amortized_cost > market_face_value:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_IdentifierType",
+      "name": "Validation for IdentifierType",
+      "description": "should not be null",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row.get('IdentifierType')):\n                        return False\n                        \n                    if row.get('IdentifierType') is None:\n                        if pd.isna(row.get('IdentifierValue')):\n                            return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_IdentifierType_1",
+      "name": "Validation for IdentifierType",
+      "description": "should be 'CUSIP' if IdentifierValue is present",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if pd.isna(identifier_type):\n                        return False\n                        \n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if identifier_type and identifier_value is not None:\n                        if identifier_type != 'CUSIP':\n                            return False\n                        \n                    security_description_1 = row.get('Security_Description_1')\n                    security_description_2 = row.get('Security_Description_2')\n                    if security_description_1 is not None or security_description_2 is not None:\n                        if security_description_1 is None or security_description_2 is None:\n                            return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_IdentifierType_2",
+      "name": "Validation for IdentifierType",
+      "description": "IdentifierType should be one of ['Equity', 'MutualFund', 'SecuritizationDebt']",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "IdentifierType"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row.get('IdentifierType')):\n                        return False\n                        \n                    value = row.get('IdentifierType')\n                    if not isinstance(value, str):\n                        return False\n                        \n                    if value not in ['Equity', 'MutualFund', 'SecuritizationDebt']:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_MarketFaceValue",
+      "name": "Validation for MarketFaceValue",
+      "description": {
+        "min": null,
+        "max": null
+      },
+      "source_section": "Security Description",
+      "fields": [
+        "MarketFaceValue"
+      ],
+      "type": "range_validation",
+      "validation_code": "def validate_rule(row):\n                    market_value = row.get('MarketFaceValue')\n                    if market_value is None:\n                        return False\n                        \n                    if not isinstance(market_value, (int, float)):\n                        return False\n                        \n                    if market_value < 0:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_MarketFaceValue_1",
+      "name": "Validation for MarketFaceValue",
+      "description": "MarketFaceValue should be a number",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "MarketFaceValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'MarketFaceValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['MarketFaceValue']):\n                        return False\n                        \n                    if not isinstance(row['MarketFaceValue'], (int, float)):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_PrivatePlacement",
+      "name": "Validation for PrivatePlacement",
+      "description": true,
+      "source_section": "Private Placement",
+      "fields": [
+        "PrivatePlacement"
+      ],
+      "type": "boolean",
+      "validation_code": "def validate_rule(row):\n                    if 'PrivatePlacement' not in row:\n                        return False\n                        \n                    value = row.get('PrivatePlacement', False)\n                    if not isinstance(value, bool):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_PrivatePlacement_1",
+      "name": "Validation for PrivatePlacement",
+      "description": "PrivatePlacement field should be either true or false",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "PrivatePlacement"
+      ],
+      "type": "boolean_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'PrivatePlacement' not in row:\n                        return False\n                        \n                    value = row.get('PrivatePlacement', False)\n                    if not isinstance(value, bool):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_PurchaseDate",
+      "name": "Validation for PurchaseDate",
+      "description": "The PurchaseDate field should be in a valid date format.",
+      "source_section": "Purchase Date \r\nReport the date on which the security was purchased or acquired in the case of credit \r\nsensitive securities that are evaluated for credit loss purposes in accordance with ASC Topic",
+      "fields": [
+        "PurchaseDate"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_purchase_date(row):\n                    if 'PurchaseDate' not in row:\n                        return False\n                        \n                    try:\n                        purchase_date = row['PurchaseDate']\n                        if not isinstance(purchase_date, str):\n                            return False\n                            if len(purchase_date) != 10:\n                                return False\n                                if purchase_date[:4].isdigit() and \\\n                                        purchase_date[5:7].isdigit() and \\\n                                        purchase_date[8:11].isdigit():\n                                    return True\n                                else:\n                                    return False\n                            else:\n                                return False\n                    except KeyError:\n                        return False"
+    },
+    {
+      "id": "rule_1_PurchaseDate_1",
+      "name": "Validation for PurchaseDate",
+      "description": "The PurchaseDate field should only contain valid dates.",
+      "source_section": "Purchase Date \r\nReport the date on which the security was purchased or acquired in the case of credit \r\nsensitive securities that are evaluated for credit loss purposes in accordance with ASC Topic",
+      "fields": [
+        "PurchaseDate"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_purchase_date(row):\n                    if 'PurchaseDate' not in row:\n                        return False\n                        \n                    try:\n                        purchase_date = row['PurchaseDate']\n                        if not isinstance(purchase_date, str):\n                            return False\n                            # Convert string to datetime object\n                            import datetime\n                            purchase_date = datetime.datetime.strptime(purchase_date, \"%Y-%m-%d\")\n                            if purchase_date < datetime.datetime.min or purchase_date > datetime.datetime.max:\n                                return False\n                            return True\n                    except ValueError:\n                        return False"
+    },
+    {
+      "id": "rule_1_PurchaseDate_2",
+      "name": "Validation for PurchaseDate",
+      "description": "The PurchaseDate field should not be the same for multiple records with the same UniqueId.",
+      "source_section": "Purchase Date \r\nReport the date on which the security was purchased or acquired in the case of credit \r\nsensitive securities that are evaluated for credit loss purposes in accordance with ASC Topic",
+      "fields": [
+        "PurchaseDate"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'UniqueId' not in row or 'PurchaseDate' not in row:\n                        return False\n                        \n                    ids = []\n                    dates = []\n                    for index, value in row.iteritems():\n                        if index == 'UniqueId':\n                            ids.append(value)\n                        elif index == 'PurchaseDate':\n                            dates.append(value)\n                        \n                    if len(ids) != len(dates):\n                        return False\n                        \n                    for i in range(len(ids)):\n                        if ids[i] in ids[i+1:] or dates[i] == dates[i+1]:\n                            return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_Security_Description_1",
+      "name": "Validation for Security_Description_1",
+      "description": "should not be null",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "Security_Description_1"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'Security_Description_1' not in row:\n                        return False\n                        \n                    if pd.isna(row['Security_Description_1']):\n                        return False\n                        \n                    if row.get('IdentifierType') is None:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if identifier_type is None or not isinstance(identifier_type, str):\n                        return False\n                        \n                    return identifier_type == 'INTERNAL'"
+    },
+    {
+      "id": "rule_1_Security_Description_1_1",
+      "name": "Validation for Security_Description_1",
+      "description": "matches_regex",
+      "source_section": "Security Description",
+      "fields": [
+        "Security_Description_1"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n    if 'Security_Description_1' in row and pd.isna(row['Security_Description_1']):\n        return False\n    return True"
+    },
+    {
+      "id": "rule_1_Security_Description_1_2",
+      "name": "Validation for Security_Description_1",
+      "description": [
+        "Agency MBS",
+        "Auction Rate Securities",
+        "CDO",
+        "CLO",
+        "CMBS",
+        "Common Stock (Equity)"
+      ],
+      "source_section": "Security Description",
+      "fields": [
+        "Security_Description_1"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'Security_Description_1' not in row:\n                        return False\n                        \n                    if pd.isna(row['Security_Description_1']):\n                        return False\n                        \n                    value = row.get('Security_Description_1', '')\n                    if not isinstance(value, str):\n                        return False\n                        \n                    if value not in ['Agency MBS', 'Auction Rate Securities', 'CDO', 'CLO', 'CMBS', 'Common Stock (Equity)']:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_UniqueId",
+      "name": "Validation for UniqueId",
+      "description": "must be present for each record",
+      "source_section": "Unique ID",
+      "fields": [
+        "UniqueId"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'UniqueId' not in row:\n                        return False\n                        \n                    if pd.isna(row['UniqueId']):\n                        return False\n                        \n                    if not isinstance(row['UniqueId'], str):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_UniqueId_1",
+      "name": "Validation for UniqueId",
+      "description": "must follow a specific format (e.g., alphanumeric, numeric, etc.)",
+      "source_section": "Unique ID",
+      "fields": [
+        "UniqueId"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'UniqueId' not in row:\n                        return False\n                        \n                    if pd.isna(row['UniqueId']):\n                        return False\n                        \n                    value = row['UniqueId']\n                    if not isinstance(value, str):\n                        return False\n                        \n                    if not re.match(r'^[A-Za-z0-9]+$', value):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_UniqueId_2",
+      "name": "Validation for UniqueId",
+      "description": "must be unique across all records",
+      "source_section": "Unique ID",
+      "fields": [
+        "UniqueId"
+      ],
+      "type": "unique_value",
+      "validation_code": "def validate_rule(row):\n                    if 'UniqueId' not in row:\n                        return False\n                        \n                    if pd.isna(row['UniqueId']):\n                        return False\n                        \n                    values = set()\n                    for index, record in row.iterrows():\n                        if 'UniqueId' in record:\n                            values.add(record['UniqueId'])\n                        \n                    if len(values) != len(row):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_1_UniqueId_3",
+      "name": "Validation for UniqueId",
+      "description": "must be the same for each record with the same IdentifierType and IdentifierValue",
+      "source_section": "Unique ID",
+      "fields": [
+        "UniqueId"
+      ],
+      "type": "consistency_check",
+      "validation_code": "def validate_rule(row):\n                    if 'UniqueId' not in row:\n                        return False\n                        \n                    if pd.isna(row['UniqueId']):\n                        return False\n                        \n                    identifier_type = row.get('Identifier_Type', None)\n                    if identifier_type is None:\n                        return False\n                        \n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    if 'Value' not in row:\n                        return False\n                        \n                    if pd.isna(row['Value']):\n                        return False\n                        \n                    values = row['Value']\n                    if not isinstance(values, (str, int, float)):\n                        return False\n                        \n                    if identifier_type and values != prev_value:\n                        return False\n                        \n                    prev_value = values\n                    return True"
+    },
+    {
+      "id": "rule_2_AmortizedCost_MarketFaceValue",
+      "name": "Validation for AmortizedCost, MarketFaceValue",
+      "description": {
+        "min": 0,
+        "max": null
+      },
+      "source_section": "Private Placement",
+      "fields": [
+        "AmortizedCost",
+        "MarketFaceValue"
+      ],
+      "type": "numeric",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row or 'MarketFaceValue' not in row:\n                        return False\n                        \n                    amortized_cost = row.get('AmortizedCost', None)\n                    market_face_value = row.get('MarketFaceValue', None)\n                    \n                    if not isinstance(amortized_cost, (int, float)) or not isinstance(market_face_value, (int, float)):\n                        return False\n                        \n                    if amortized_cost > market_face_value:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_AmortizedCost_MarketFaceValue_1",
+      "name": "Validation for AmortizedCost, MarketFaceValue",
+      "description": "The AmortizedCost should be less than or equal to MarketFaceValue",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "AmortizedCost",
+        "MarketFaceValue"
+      ],
+      "type": "range_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row or 'MarketFaceValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['AmortizedCost']) or pd.isna(row['MarketFaceValue']):\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)) or not isinstance(row['MarketFaceValue'], (int, float)):\n                        return False\n                        \n                    if row['AmortizedCost'] > row['MarketFaceValue']:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_AmortizedCost_MarketFaceValue_2",
+      "name": "Validation for AmortizedCost, MarketFaceValue",
+      "description": "Both fields must be in USD-equivalent terms as of the reporting date",
+      "source_section": "Currency",
+      "fields": [
+        "AmortizedCost",
+        "MarketFaceValue"
+      ],
+      "type": "range_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row or 'MarketFaceValue' not in row:\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)):\n                        return False\n                        \n                    if not isinstance(row['MarketFaceValue'], (int, float)):\n                        return False\n                        \n                    if row['AmortizedCost'] < 0 or row['MarketFaceValue'] < 0:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_AmortizedCost_PurchaseDate",
+      "name": "Validation for AmortizedCost, PurchaseDate",
+      "description": "The AmortizedCost and PurchaseDate fields should be populated for each record.",
+      "source_section": "Purchase Date \r\nReport the date on which the security was purchased or acquired in the case of credit \r\nsensitive securities that are evaluated for credit loss purposes in accordance with ASC Topic",
+      "fields": [
+        "AmortizedCost",
+        "PurchaseDate"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'AmortizedCost' not in row or pd.isna(row['AmortizedCost']):\n                        return False\n                        \n                    if not isinstance(row['AmortizedCost'], (int, float)):\n                        return False\n                        \n                    if 'PurchaseDate' not in row or pd.isna(row['PurchaseDate']):\n                        return False\n                        \n                    if not isinstance(row['PurchaseDate'], (pd.Timestamp, str)):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "should be one of ['CUSIP', 'ISIN', 'SEDOL', 'INTERNAL']",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row.get('IdentifierType')):\n                        return False\n                        \n                    value = row.get('IdentifierType')\n                    if not isinstance(value, str):\n                        return False\n                        \n                    if value not in ['CUSIP', 'ISIN', 'SEDOL', 'INTERNAL']:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_1",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "CUSIP format validation",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierType']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n                        \n                    if row['IdentifierType'] != 'CUSIP':\n                        return False\n                        \n                    if 'IdentifierValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierValue']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierValue'], str):\n                        return False\n                        \n                    if len(row['IdentifierValue']) != 19:\n                        return False\n                        \n                    if not row['IdentifierValue'].isdigit():\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_10",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": [
+        "EQ"
+      ],
+      "source_section": "Accounting Intent",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    identifier_value = row.get('IdentifierValue')\n                        \n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    if identifier_type not in ['Security_Type']:\n                        return True\n                        \n                    if not isinstance(identifier_value, str):\n                        return False\n                        \n                    if identifier_value != 'EQ':\n                        return True\n                        \n                    return identifier_type == 'Security_Type'"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_11",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "ISO 4217 three-letter currency code",
+      "source_section": "Currency",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if not isinstance(identifier_value, str):\n                        return False\n                        \n                    if len(identifier_value) != 3:\n                        return False\n                        \n                    if not identifier_value.isalpha():\n                        return False\n                        \n                    if not all(char.isalpha() or char.isdigit() or char == '_' for char in identifier_value):\n                        return False\n                        \n                    if not identifier_value.isupper():\n                        return False\n                        \n                    import re\n                    if not re.match(r'[A-Z]{3}$', identifier_value):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_2",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "ISIN format validation",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierType']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n                        \n                    if row['IdentifierType'] != 'ISIN':\n                        return False\n                        \n                    if 'IdentifierValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierValue']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierValue'], str):\n                        return False\n                        \n                    try:\n                        isin_format = re.compile(r'^[A-Z]{2}[A-Z0-9]{14}$')\n                        if not isin_format.match(row['IdentifierValue']):\n                            return False\n                    except Exception as e:\n                        print(f\"Error: {e}\")\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_3",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "SEDOL format validation",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if pd.isna(identifier_type):\n                        return False\n                        \n                    if identifier_type is None:\n                        return False\n                        \n                    if identifier_type != 'SEDOL':\n                        return True\n                        \n                    if 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if pd.isna(identifier_value):\n                        return False\n                        \n                    if not isinstance(identifier_value, str):\n                        return False\n                        \n                    if len(identifier_value) != 12:\n                        return False\n                        \n                    if not identifier_value.isdigit():\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_4",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": [
+        "Y",
+        "N",
+        "Rule 144A",
+        "direct purchase municipal securities"
+      ],
+      "source_section": "Private Placement",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    identifier_value = row.get('IdentifierValue')\n                        \n                    if not isinstance(identifier_type, str) or not isinstance(identifier_value, str):\n                        return False\n                        \n                    allowed_values = ['Y', 'N', 'Rule 144A', 'direct purchase municipal securities']\n                    if identifier_type not in allowed_values:\n                        return False\n                        \n                    if identifier_type == 'Rule 144A':\n                        if identifier_value not in ['Rule 144A Institutional Accredited Investor', 'Rule 144A Qualified Institutional Buyer']:\n                            return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_5",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "Both 'IdentifierType' and 'IdentifierValue' should be present in the dataset.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierType']) or pd.isna(row['IdentifierValue']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str) or not isinstance(row['IdentifierValue'], str):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_6",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "'IdentifierType' should be either 'AFS' or 'HTM'. 'IdentifierValue' should be a valid security identifier.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierType']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n                        \n                    if row['IdentifierType'] not in ['AFS', 'HTM']:\n                        return False\n                        \n                    if 'IdentifierValue' not in row:\n                        return False\n                        \n                    if pd.isna(row['IdentifierValue']):\n                        return False\n                        \n                    if not isinstance(row['IdentifierValue'], str):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_7",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "'IdentifierType' should be 'AFS' and 'IdentifierValue' should be a valid AFS security identifier.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if not isinstance(identifier_type, str) or identifier_type != 'AFS':\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if pd.isna(identifier_value):\n                        return False\n                        \n                    if not isinstance(identifier_value, str):\n                        return False\n                        \n                    allowed_afs_ids = [\"AF123456789\", \"AF234567890\", \"AF345678901\"]\n                    if identifier_value not in allowed_afs_ids:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_8",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "'IdentifierType' should be 'HTM' and 'IdentifierValue' should be a valid HTM security identifier.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "allowed_values",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'IdentifierValue' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if not isinstance(identifier_type, str) or identifier_type != 'HTM':\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if pd.isna(identifier_value) or not isinstance(identifier_value, str):\n                        return False\n                        \n                    if len(identifier_value) != 20:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_IdentifierType_IdentifierValue_9",
+      "name": "Validation for IdentifierType, IdentifierValue",
+      "description": "If 'IdentifierType' is 'HTM': 'AmortizedCost' should be multiplied by 'pool-level amount of allowance for credit losses' and then divided by 'total amortized cost in the pool'. The result should be reported as a positive number.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue"
+      ],
+      "type": "calculation",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row or 'AmortizedCost' not in row:\n                        return False\n                        \n                    identifier_type = row['IdentifierType']\n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    if identifier_type != 'HTM':\n                        return True\n                        \n                    if pd.isna(row['AmortizedCost']) or not isinstance(row['AmortizedCost'], (float, int)):\n                        return False\n                        \n                    if pd.isna(row['pool-level amount of allowance for credit losses']) or not isinstance(row['pool-level amount of allowance for credit losses'], (float, int)):\n                        return False\n                        \n                    if pd.isna(row['total amortized cost in the pool']) or not isinstance(row['total amortized cost in the pool'], (float, int)):\n                        return False\n                        \n                    amortized_cost = row['AmortizedCost']\n                    allowance = row['pool-level amount of allowance for credit losses']\n                    total_amortized_cost = row['total amortized cost in the pool']\n                    \n                    if amortized_cost <= 0:\n                        return False\n                        \n                    result = amortized_cost * allowance / total_amortized_cost\n                    \n                    if result <= 0:\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_2_Security_Description_1_Security_Description_2",
+      "name": "Validation for Security_Description_1, Security_Description_2",
+      "description": "should not be empty strings",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "Security_Description_1",
+        "Security_Description_2"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'Security_Description_1' not in row or row['Security_Description_1'] is pd.NaT:\n                        return False\n                        \n                    if not isinstance(row['Security_Description_1'], str) or len(str(row['Security_Description_1']).strip()) == 0:\n                        return False\n                        \n                    if 'Security_Description_2' not in row or row['Security_Description_2'] is pd.NaT:\n                        return False\n                        \n                    if not isinstance(row['Security_Description_2'], str) or len(str(row['Security_Description_2']).strip()) == 0:\n                        return False\n                        \n                    if 'IdentifierType' not in row or row['IdentifierType'] is pd.NaT:\n                        return False\n                        \n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n                        \n                    if row['IdentifierType'] != 'INTERNAL':\n                        return True\n                        \n                    return False"
+    },
+    {
+      "id": "rule_2_Security_Description_2_Security_Description_3",
+      "name": "Validation for Security_Description_2, Security_Description_3",
+      "description": null,
+      "source_section": "Security Description",
+      "fields": [
+        "Security_Description_2",
+        "Security_Description_3"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n                    if 'Security_Description_2' not in row or 'Security_Description_3' not in row:\n                        return False\n                        \n                    if pd.isna(row['Security_Description_2']) or pd.isna(row['Security_Description_3']):\n                        return False\n                        \n                    if not isinstance(row['Security_Description_2'], str) or not isinstance(row['Security_Description_3'], str):\n                        return False\n                        \n                    if not (row.get('Security_Description_2') and row.get('Security_Description_3')):\n                        return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_3_Security_Description_1_Security_Description_2_Security_Description_3",
+      "name": "Validation for Security_Description_1, Security_Description_2, Security_Description_3",
+      "description": "should contain at least one non-empty string",
+      "source_section": "Identifier Type and Identifier Value",
+      "fields": [
+        "Security_Description_1",
+        "Security_Description_2",
+        "Security_Description_3"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if 'Security_Description_1' not in row or pd.isna(row['Security_Description_1']):\n                        return False\n\n                    if 'IdentifierType' not in row or pd.isna(row['IdentifierType']):\n                        return False\n\n                    if not isinstance(row['IdentifierType'], str):\n                        return False\n\n                    value = row['IdentifierType']\n                    if value != 'INTERNAL':\n                        return True\n\n                    if not (pd.notna(row['Security_Description_1']) or\n                             pd.notna(row['Security_Description_2']) or\n                             pd.notna(row['Security_Description_3'])):\n                        return False\n\n                    return True"
+    },
+    {
+      "id": "rule_3_Security_Description_1_Security_Description_2_Security_Description_3_1",
+      "name": "Validation for Security_Description_1, Security_Description_2, Security_Description_3",
+      "description": 1,
+      "source_section": "Private Placement",
+      "fields": [
+        "Security_Description_1",
+        "Security_Description_2",
+        "Security_Description_3"
+      ],
+      "type": "min_length",
+      "validation_code": "def validate_rule(row):\n                    if not all(field in row and row.get(field, False) for field in ['Security_Description_1', 'Security_Description_2', 'Security_Description_3']):\n                        return False\n                        \n                    return any(row.get(field, False) for field in ['Security_Description_1', 'Security_Description_2', 'Security_Description_3'])"
+    },
+    {
+      "id": "rule_3_Security_Description_1_Security_Description_2_Security_Description_3_2",
+      "name": "Validation for Security_Description_1, Security_Description_2, Security_Description_3",
+      "description": "Security_Description fields should contain only alphanumeric characters and spaces",
+      "source_section": "Book yield \r\nReport the effective interest rate that would be used to determine the allowance for credit",
+      "fields": [
+        "Security_Description_1",
+        "Security_Description_2",
+        "Security_Description_3"
+      ],
+      "type": "format_validation",
+      "validation_code": "def validate_rule(row):\n                    if not all(isinstance(x, str) for x in [row.get('Security_Description_1', ''), row.get('Security_Description_2', ''), row.get('Security_Description_3', '')]):\n                        return False\n                        \n                    for desc in [row.get('Security_Description_1', ''), row.get('Security_Description_2', ''), row.get('Security_Description_3', '')]:\n                        if not re.match(r'^[A-Za-z0-9 ]+$', desc):\n                            return False\n                        \n                    return True"
+    },
+    {
+      "id": "rule_3_Security_Description_1_Security_Description_2_Security_Description_3_3",
+      "name": "Validation for Security_Description_1, Security_Description_2, Security_Description_3",
+      "description": "At least one of the fields must have a value",
+      "source_section": "Currency",
+      "fields": [
+        "Security_Description_1",
+        "Security_Description_2",
+        "Security_Description_3"
+      ],
+      "type": "required_field",
+      "validation_code": "def validate_rule(row):\n    if pd.isna(row.get('Security_Description_1', None)):\n        return False\n    if pd.isna(row.get('Security_Description_2', None)):\n        return False\n    if pd.isna(row.get('Security_Description_3', None)):\n        return False\n    return True"
+    },
+    {
+      "id": "rule_4_IdentifierType_IdentifierValue_AmortizedCost_MarketFaceValue",
+      "name": "Validation for IdentifierType, IdentifierValue, AmortizedCost, MarketFaceValue",
+      "description": "The 'IdentifierType' should be 'AFS' or 'HTM' for the 'IdentifierValue' to apply to this rule.",
+      "source_section": "Amount of Allowance for Credit Losses",
+      "fields": [
+        "IdentifierType",
+        "IdentifierValue",
+        "AmortizedCost",
+        "MarketFaceValue"
+      ],
+      "type": "cross_field",
+      "validation_code": "def validate_rule(row):\n                    if 'IdentifierType' not in row:\n                        return False\n                        \n                    identifier_type = row.get('IdentifierType')\n                    if pd.isna(identifier_type):\n                        return False\n                        \n                    if not isinstance(identifier_type, str):\n                        return False\n                        \n                    identifier_value = row.get('IdentifierValue')\n                    if pd.isna(identifier_value):\n                        return False\n                        \n                    if identifier_type not in ['AFS', 'HTM']:\n                        return False\n                        \n                    if identifier_type == 'AFS':\n                        if pd.isna(row.get('AmortizedCost')):\n                            return False\n                           \n                        if not isinstance(row.get('AmortizedCost'), (int, float)):\n                            return False\n                           \n                        if row.get('AmortizedCost') <= 0:\n                            return False\n                           \n                        if pd.isna(row.get('MarketFaceValue')):\n                            return False\n                           \n                        if not isinstance(row.get('MarketFaceValue'), (int, float)):\n                            return False\n                           \n                        if row.get('AmortizedCost') != row.get('MarketFaceValue'):\n                            return False\n                           \n                    elif identifier_type == 'HTM':\n                        if pd.isna(row.get('AmortizedCost')):\n                            return False\n                           \n                        if not isinstance(row.get('AmortizedCost'), (int, float)):\n                            return False\n                           \n                        if row.get('AmortizedCost') <= 0:\n                            return False\n                           \n                    return True"
+    }
+  ]
+}
